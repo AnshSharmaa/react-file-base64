@@ -1,7 +1,7 @@
 {
-  "name": "react-file-base64",
-  "version": "1.0.3",
-  "description": "React Component for Converting File to base64",
+  "name": "rfile-R19",
+  "version": "0.1.0",
+  "description": "React Component for Converting File to base64 upgraded to be used for React 19",
   "main": "build/build.min.js",
   "scripts": {
     "dev": "webpack --config webpack.config.dev.js && webpack-dev-server --inline --hot",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/BosNaufal/react-file-base64"
+    "url": "git+https://github.com/AnshSharmaa/react-file-base64"
   },
   "keywords": [
     "react",
@@ -23,15 +23,15 @@
     "input file",
     "file reader"
   ],
-  "author": "Naufal Rabbani <bosnaufalemail@gmail.com>",
+  "author": "Ansh Sharma ",
   "contributors": [
-    "Luis Rojas <BosNaufal@gmail.com>"
+    "Ansh Sharma"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/BosNaufal/react-file-base64/issues"
+    "url": "https://github.com/AnshSharmaa/react-file-base64/issues"
   },
-  "homepage": "https://github.com/BosNaufal/react-file-base64#readme",
+  "homepage": "https://github.com/AnshSharmaa/react-file-base64#readme",
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-loader": "^6.4.1",
