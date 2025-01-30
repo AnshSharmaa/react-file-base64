@@ -1,43 +1,18 @@
-/*! Copyright (c) 2016 Naufal Rabbani (http://github.com/BosNaufal)
-* Licensed Under MIT (http://opensource.org/licenses/MIT)
-*
-* React File Base64 - Version@1.0.0
-*
-*/
+import { useState } from 'react';
 
-import React from 'react';
+const FileBase64 = ({ multiple = false, onDone }) => {
+  const [files, setFiles] = useState([]);
 
-export default class FileBase64 extends React.Component {
+  const handleChange = (e) => {
+    const files = e.target.files;
+    const allFiles = [];
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      files: [],
-    };
-  }
-
-  handleChange(e) {
-
-    // get the files
-    let files = e.target.files;
-
-    // Process each file
-    var allFiles = [];
-    for (var i = 0; i < files.length; i++) {
-
-      let file = files[i];
-
-      // Make new FileReader
-      let reader = new FileReader();
-
-      // Convert the file to base64 text
+    Array.from(files).forEach((file) => {
+      const reader = new FileReader();
       reader.readAsDataURL(file);
 
-      // on reader load somthing...
       reader.onload = () => {
-
-        // Make a fileInfo Object
-        let fileInfo = {
+        const fileInfo = {
           name: file.name,
           type: file.type,
           size: Math.round(file.size / 1000) + ' kB',
@@ -45,32 +20,22 @@ export default class FileBase64 extends React.Component {
           file: file,
         };
 
-        // Push it to the state
         allFiles.push(fileInfo);
 
-        // If all files have been proceed
-        if(allFiles.length == files.length){
-          // Apply Callback function
-          if(this.props.multiple) this.props.onDone(allFiles);
-          else this.props.onDone(allFiles[0]);
+        if (allFiles.length === files.length) {
+          onDone(multiple ? allFiles : allFiles[0]);
         }
+      };
+    });
+  };
 
-      } // reader.onload
-
-    } // for
-
-  }
-
-  render() {
-    return (
-      <input
-        type="file"
-        onChange={ this.handleChange.bind(this) }
-        multiple={ this.props.multiple } />
-    );
-  }
-}
-
-FileBase64.defaultProps = {
-  multiple: false,
+  return (
+    <input
+      type="file"
+      onChange={handleChange}
+      multiple={multiple}
+    />
+  );
 };
+
+export default FileBase64;
